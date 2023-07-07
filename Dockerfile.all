@@ -1,0 +1,37 @@
+# Base image
+FROM debian
+
+# Environment
+ENV MPS_USER=mps
+ENV MPS_PASS=mps
+ENV MPS_PATH=/opt/mps
+ENV MPS_TOOLS=/opt/mps/tools
+ENV DEBIAN_FRONTEND=noninteractive
+
+# All files
+RUN apt --yes update && apt --yes upgrade
+RUN apt --yes install git
+RUN git clone https://github.com/odem/mps.git $MPS_PATH
+RUN chmod a+r -R $MPS_PATH
+
+# Bootstrap user
+RUN cd $MPS_PATH && ./bootstrap.bash -u $MPS_USER -p $MPS_USER
+USER ${MPS_USER}
+WORKDIR /home/${MPS_USER}
+
+# Terminal and desktop installation
+RUN cd $MPS_PATH \
+    && sudo git pull \
+    && ./terminal.bash -u $MPS_USER \
+    && ./desktop.bash -u $MPS_USER
+
+# Tigervnc
+RUN sudo mkdir -p $MPS_TOOLS/tigervnc
+COPY tiger-vnc-password.txt $MPS_TOOLS/tigervnc/tiger-vnc-password.txt
+EXPOSE 5901
+
+# Entrypoint
+COPY entrypoint.bash $MPS_TOOLS/entrypoint.bash
+RUN sudo chmod a+x $MPS_TOOLS/entrypoint.bash
+ENTRYPOINT $MPS_TOOLS/entrypoint.bash
+

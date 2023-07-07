@@ -1,0 +1,11 @@
+# Base image
+FROM mpsimg.boot
+
+# Terminal installation
+RUN cd $MPS_PATH \
+    && sudo git pull \
+    && ./terminal.bash -u $MPS_USER
+
+# Entrypoint
+ENTRYPOINT ["tail"]
+CMD ["-f","/dev/null"]
