@@ -48,7 +48,7 @@ make STAGE=dsk vnc
 make STAGE=dsk stop
 ```
 ![Desktop](vnc.png) \
-Voila! A dockerized mps system.
+Voila! A dockerized mps system via vnc.
 
 The images are also available on docker hub.
 Respective image names are:
