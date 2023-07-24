@@ -46,5 +46,5 @@ stop:
 exec:
 	docker exec -it $(CONTNAME) bash
 vnc:
-	remmina vnc://user1234:NzATSr7ADWuuX09l+J8kng==@127.0.0.1:$(PORT) &
+	remmina vnc://user12334@127.0.0.1:$(PORT) &
 

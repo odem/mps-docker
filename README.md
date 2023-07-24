@@ -27,7 +27,7 @@ Usage: make [PARAM=VALUE] [TARGET]
        OPT_RUN_DOCKER : Optionas passed to docker on start
 ```
 
-Example invocations to build:
+Individual steps to build:
 ```
 make STAGE=boot clean
 make STAGE=boot build
@@ -35,18 +35,20 @@ make STAGE=boot PORT=6000 OPT_RUN_DOCKER=-d start
 make STAGE=boot PORT=6000 exec
 make STAGE=boot PORT=6000 stop
 ```
-Or all in one:
+Or all in one and with default parameters:
 ```
 make STAGE=term all
 make STAGE=term exec
 make STAGE=term stop
 ```
-Connect via vnc (Password is 'user1234'):
+Connection via vnc (Password is 'user1234'):
 ```
 make STAGE=dsk all
 make STAGE=dsk vnc
 make STAGE=dsk stop
 ```
+![Desktop](vnc.png) \
+Voila! A dockerized mps system.
 
 The images are also available on docker hub.
 Respective image names are:
