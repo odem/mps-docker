@@ -1,10 +1,10 @@
 # Base image
-FROM mpsimg.term
+FROM mpsimg.dsk
 
-# Desktop installation
-RUN cd $MPS_PATH \
-    && sudo git pull \
-    && ./desktop.bash -u $MPS_USER
+# # Desktop installation
+# RUN cd $MPS_PATH \
+#     && sudo git pull \
+#     && ./desktop.bash -u $MPS_USER
 
 # Tigervnc
 RUN sudo mkdir -p $MPS_TOOLS/tigervnc
@@ -14,4 +14,7 @@ EXPOSE 5901
 # Entrypoint
 COPY entrypoint.bash $MPS_TOOLS/entrypoint.bash
 RUN sudo chmod a+rx $MPS_TOOLS/entrypoint.bash
+#ENTRYPOINT tail -f /dev/null
+
 ENTRYPOINT $MPS_TOOLS/entrypoint.bash
+

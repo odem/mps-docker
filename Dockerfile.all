@@ -32,6 +32,6 @@ EXPOSE 5901
 
 # Entrypoint
 COPY entrypoint.bash $MPS_TOOLS/entrypoint.bash
-RUN sudo chmod a+x $MPS_TOOLS/entrypoint.bash
+RUN sudo chmod a+rx $MPS_TOOLS/entrypoint.bash
 ENTRYPOINT $MPS_TOOLS/entrypoint.bash
 
