@@ -1,8 +1,9 @@
 # mps-docker
-A dockerized version of the mps script collection.
+A dockerized version of the mps script collection
+([Link](https://github.com/odem/mps)).
 Builds containers for testing purposes into the three stages (boot,term,dsk).
 Boot creates a user and password, term installs terminal essentials
-and dsk a full fledged desktop.
+and dsk a customized tiling window manager(qtile).
 
 
 Help messages are available via the help target:
